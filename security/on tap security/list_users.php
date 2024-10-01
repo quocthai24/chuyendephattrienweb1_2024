@@ -3,6 +3,8 @@
 session_start();
 
 require_once 'models/UserModel.php';
+require_once 'encryption_helper.php'; // Bao gồm file mã hóa
+
 $userModel = new UserModel();
 
 $params = [];
@@ -11,6 +13,7 @@ if (!empty($_GET['keyword'])) {
 }
 
 $users = $userModel->getUsers($params);
+$key = "YOUR_SECRET_KEY"; // Đặt khóa bí mật cho mã hóa
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,23 +43,18 @@ $users = $userModel->getUsers($params);
                     <?php foreach ($users as $user) {?>
                         <tr>
                             <th scope="row"><?php echo $user['id']?></th>
+                            <td><?php echo $user['name']?></td>
+                            <td><?php echo $user['fullname']?></td>
+                            <td><?php echo $user['type']?></td>
                             <td>
-                                <?php echo $user['name']?>
-                            </td>
-                            <td>
-                                <?php echo $user['fullname']?>
-                            </td>
-                            <td>
-                                <?php echo $user['type']?>
-                            </td>
-                            <td>
-                                <a href="form_user.php?id=<?php echo $user['id'] ?>">
+                                <!-- Mã hóa ID trước khi thêm vào liên kết -->
+                                <a href="form_user.php?id=<?php echo encryptId($user['id'], "key"); ?>">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
                                 </a>
-                                <a href="view_user.php?id=<?php echo $user['id'] ?>">
+                                <a href="view_user.php?id=<?php echo encryptId($user['id'], $key); ?>">
                                     <i class="fa fa-eye" aria-hidden="true" title="View"></i>
                                 </a>
-                                <a href="delete_user.php?id=<?php echo $user['id'] ?>">
+                                <a href="delete_user.php?id=<?php echo encryptId($user['id'], $key); ?>">
                                     <i class="fa fa-eraser" aria-hidden="true" title="Delete"></i>
                                 </a>
                             </td>
@@ -64,7 +62,7 @@ $users = $userModel->getUsers($params);
                     <?php } ?>
                 </tbody>
             </table>
-        <?php }else { ?>
+        <?php } else { ?>
             <div class="alert alert-dark" role="alert">
                 This is a dark alert—check it out!
             </div>
