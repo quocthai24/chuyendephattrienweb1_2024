@@ -1,0 +1,197 @@
+@primary-color: #00bfff;
+@nav-background: #152545;
+@font-hind: 'Hind', sans-serif;
+@font-roboto: 'Roboto', sans-serif;
+
+/* Thiết lập kiểu chữ cho toàn bộ trang */
+body {
+    font-family: @font-hind;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Thiết lập cơ bản cho thanh điều hướng */
+.nav-bar {
+    background-color: @nav-background;
+    display: flex;
+    justify-content: center;
+    width: 861.66px;
+    margin: 20px auto;
+
+    ul {
+        width: 100%;
+        height: 49px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        color: #848484;
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: @font-hind;
+        position: relative;
+        padding: 12px 10px 13px;
+
+        &.active {
+            color: @primary-color;
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: @primary-color;
+                bottom: 5px;
+                left: 0;
+            }
+        }
+    }
+}
+
+/* Phần hiển thị hình ảnh */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.item {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+
+    img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+        transform: scale(1.1);
+    }
+
+    &:hover .overlay {
+        opacity: 1; /* Hiện overlay khi hover */
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 174, 239, 0.9);
+        opacity: 0; /* Ẩn overlay */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.3s ease;
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin: 0; /* Đặt margin cho nút */
+            position: relative; /* Để căn giữa trong overlay */
+            justify-content: center;
+
+            .button {
+                background-color: rgba(0, 174, 239, 0.9); // Nền xanh dương nhạt
+                border: 2px solid white; // Viền trắng
+                color: white; // Chữ màu trắng
+                padding: 4px 20px; // Kích thước nút nhỏ hơn nhưng chiều ngang dài hơn
+                font-size: 16px; // Font size
+                font-family: @font-hind; // Đặt font
+                border-radius: 20px; // Giữ bo góc cho nút
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.3s, color 0.3s;
+
+                &:hover {
+                    background-color: black; // Nền đen khi hover
+                    color: white; // Chữ trắng khi hover
+                    transform: scale(1.02); // Phóng to nhẹ
+                }
+            }
+        }
+    }
+
+    .info {
+        background-color: white;
+        padding: 20px;
+        text-align: left;
+        margin-top: -5px;
+        border: 1px solid #e0e0e0;
+        position: relative;
+        z-index: 1;
+        transition: background-color 0.3s;
+
+        h4, p {
+            transition: color 0.3s; // Thêm hiệu ứng chuyển màu
+        }
+
+        h4 {
+            color: #000000; // Màu chữ "Charging Issues" bình thường
+            font-size: 16px;
+            font-family: @font-roboto;
+            margin: 0;
+        }
+
+        p {
+            color: #848484; // Màu chữ "Computer Repair" bình thường
+            font-size: 13px;
+            font-family: @font-hind;
+            margin: 0;
+            text-align: left;
+        }
+
+        &:hover {
+            background-color: #000; // Nền đen khi hover
+            h4 {
+                color: #fff; // Chữ trắng khi hover
+            }
+            p {
+                color: #fff; // Chữ trắng khi hover
+            }
+        }
+    }
+}
+
+/* CSS cho modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+
+    img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 8px;
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+    }
+}

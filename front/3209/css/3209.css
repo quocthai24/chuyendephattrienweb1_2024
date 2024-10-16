@@ -1,0 +1,133 @@
+body {
+  font-family: 'Urbanist', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+.page-title-inner {
+  color: #7E7E7E;
+  font-size: 15px;
+  padding: 58px 0;
+  text-align: center;
+}
+h1 {
+  color: #000000;
+  margin: 0;
+}
+.shop-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.results-info {
+  color: #7E7E7E;
+  font-size: 18px;
+  font-family: 'Urbanist', sans-serif;
+}
+.controls-right {
+  display: flex;
+  align-items: center;
+}
+.view-options {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.view-options button {
+  background-color: transparent;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.view-options button svg {
+  width: 32px;
+  height: 32px;
+}
+.sort-filter {
+  display: flex;
+  align-items: center;
+}
+.sort-filter select {
+  padding: 0px 20px;
+  font-size: 15px;
+  font-family: 'Urbanist', sans-serif;
+  margin-right: 10px;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: none;
+}
+.filter-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0 25px;
+  font-weight: 600;
+  border: solid 2px transparent;
+  white-space: nowrap;
+  color: #fff;
+  background-color: #000000;
+  border-color: #000000;
+  border-radius: 5px;
+  height: 50px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.filter-button:hover {
+  box-shadow: inset 0 0 10px #28a745;
+  background-color: #23923d;
+}
+.filter-button img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.product-item {
+  background-color: transparent;
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+.product-item img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+.product-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+}
+.discount-badge {
+  background-color: #28a745;
+  color: #fff;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 3px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.rating {
+  margin-top: 10px;
+}
+.rating i {
+  color: #FFD700;
+  font-size: 20px;
+}

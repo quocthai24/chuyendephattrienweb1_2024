@@ -1,0 +1,14 @@
+/* File: fonts.css */
+
+/* Import các font từ Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400&family=Roboto:wght@400&display=swap');
+
+/* Thiết lập font-family cho Hind */
+.hind-font {
+    font-family: 'Hind', sans-serif;
+}
+
+/* Thiết lập font-family cho Roboto */
+.roboto-font {
+    font-family: 'Roboto', sans-serif;
+}
